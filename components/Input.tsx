@@ -1,0 +1,18 @@
+
+import React from 'react';
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
+
+export const Input: React.FC<InputProps> = ({ label, className = '', ...props }) => {
+  return (
+    <div className="w-full">
+      {label && <label htmlFor={props.id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
+      <input
+        className={`w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${className}`}
+        {...props}
+      />
+    </div>
+  );
+};
