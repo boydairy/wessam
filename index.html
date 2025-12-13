@@ -1,30 +1,558 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>خذي بيدي</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        font-family: 'Arial', sans-serif;
-      }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
-  }
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="المنتجع الملكي - تجربة فاخرة لا مثيل لها مع مرافق استثنائية وخدمات راقية">
+    <meta name="keywords" content="منتجع, المنتجع الملكي, Royal Resort, سينما خاصة, مسطح عشبي">
+    <title>المنتجع الملكي - Royal Resort | تجربة فاخرة لا مثيل لها</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 min-h-screen text-gray-800">
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader-content">
+            <div class="crown-loader">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <h2>المنتجع الملكي</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particles-bg" id="particles"></div>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>المنتجع الملكي</h1>
+                    <span class="logo-subtitle">Royal Resort</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+                    <li><a href="#features"><i class="fa-solid fa-gem"></i> المرافق</a></li>
+                    <li><a href="#booking"><i class="fa-solid fa-calendar-check"></i> الحجز</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-envelope"></i> اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-icon-wrapper">
+                    <div class="icon-glow"></div>
+                    <i class="fa-solid fa-hotel"></i>
+                </div>
+                <h2 class="hero-title">
+                    <span class="word">مرحباً</span>
+                    <span class="word">بكم</span>
+                    <span class="word">في</span>
+                    <span class="word highlight">المنتجع</span>
+                    <span class="word highlight">الملكي</span>
+                </h2>
+                <p class="hero-subtitle">تجربة استثنائية من الفخامة والراحة في عالم من السحر والجمال</p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <i class="fa-solid fa-film"></i>
+                        <span>سينما خاصة</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fa-solid fa-tv"></i>
+                        <span>شاشة ضخمة</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fa-solid fa-tree"></i>
+                        <span>مساحات خضراء</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#booking" class="cta-button primary">
+                        <span>احجز الآن</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <a href="https://z-cdn-media.chatglm.cn/files/f1e50df4-546f-427a-b3e4-fe143704a0bb.pdf?auth_key=1797142181-addbc1c21d404077b3cb1fc86e535aae-0-b3474a66265196fa8ca6e2cf2701aafc"
+                        class="cta-button secondary" target="_blank">
+                        <span>اكتشف المزيد</span>
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <h3 class="section-title">حول المنتجع الملكي</h3>
+                <p class="section-subtitle">تجربة فريدة من نوعها في قلب الطبيعة</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">المنتجع الملكي هو وجهتك المثالية للاستمتاع بأوقات لا تُنسى مع العائلة والأصدقاء.
+                        نقدم لك مزيجاً مثالياً من الفخامة والراحة في بيئة طبيعية ساحرة.</p>
+                    <p>مع مرافق استثنائية تشمل سينما خاصة فاخرة، ومساحات خضراء واسعة، وممرات مشي جميلة، نضمن لك تجربة لا
+                        مثيل لها.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4 class="stat-number" data-count="16">0</h4>
+                            <p class="stat-label">سعة السينما</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4 class="stat-number">4×4</h4>
+                            <p class="stat-label">شاشة ضخمة (متر)</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4 class="stat-number" data-count="100">0</h4>
+                            <p class="stat-label">رضا العملاء%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section features-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3 class="section-title">مرافقنا الاستثنائية</h3>
+                <p class="section-subtitle">استمتع بتجربة فريدة مع مرافق عالمية المستوى</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Cinema Feature -->
+                <div class="feature-card cinema-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-film"></i>
+                        <div class="icon-particles">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <h4 class="feature-title">سينما ضخمة فاخرة</h4>
+                    <p class="feature-description">سينما حصرية تتسع لـ16 شخصاً مجهزة بأحدث التقنيات السينمائية</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> مقاعد فاخرة ومريحة</li>
+                        <li><i class="fa-solid fa-check"></i> مكتبة أفلام ضخمة</li>
+                        <li><i class="fa-solid fa-check"></i> بلايستيشن للألعاب</li>
+                        <li><i class="fa-solid fa-check"></i> صوت محيطي عالي الجودة</li>
+                    </ul>
+                </div>
+
+                <!-- Screen Feature -->
+                <div class="feature-card screen-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-tv"></i>
+                        <div class="icon-particles">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <h4 class="feature-title">مسطح عشبي وشاشة عملاقة</h4>
+                    <p class="feature-description">مساحة خضراء واسعة مع شاشة عرض ضخمة (4م × 4م)</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> عرض ضخمة 4×4 متر</li>
+                        <li><i class="fa-solid fa-check"></i> مسطح عشبي كبير</li>
+                        <li><i class="fa-solid fa-check"></i> إضاءة ساحرة ليلاً</li>
+                        <li><i class="fa-solid fa-check"></i> مثالي للفعاليات</li>
+                    </ul>
+                </div>
+
+                <!-- Walkways Feature -->
+                <div class="feature-card walkways-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-route"></i>
+                        <div class="icon-particles">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <h4 class="feature-title">ممرات للمشي بإطلالات جذابة</h4>
+                    <p class="feature-description">ممرات مشي جميلة محاطة بالخضرة مع إضاءة ساحرة</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> ممرات مظللة بالأشجار</li>
+                        <li><i class="fa-solid fa-check"></i> جلسات مريحة</li>
+                        <li><i class="fa-solid fa-check"></i> إضاءة رومانسية</li>
+                        <li><i class="fa-solid fa-check"></i> أجواء هادئة ومريحة</li>
+                    </ul>
+                </div>
+
+                <!-- Additional Services -->
+                <div class="feature-card service-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-spa"></i>
+                        <div class="icon-particles">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <h4 class="feature-title">خدمات إضافية</h4>
+                    <p class="feature-description">مجموعة كاملة من الخدمات لراحتك</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> واي فاي فائق السرعة</li>
+                        <li><i class="fa-solid fa-check"></i> مواقف سيارات خاصة</li>
+                        <li><i class="fa-solid fa-check"></i> خدمة ضيافة كاملة</li>
+                        <li><i class="fa-solid fa-check"></i> أمن وحراسة 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section id="instructions" class="section instructions-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3 class="section-title">تعليمات وإرشادات المنتجع</h3>
+                <p class="section-subtitle">لضمان تجربة ممتعة وآمنة للجميع</p>
+            </div>
+
+            <div class="instructions-grid">
+                <div class="instruction-card">
+                    <div class="instruction-number">1</div>
+                    <div class="instruction-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>الالتزام بالقوانين</h4>
+                    <p>الالتزام من قبل المستأجر وجميع زوار المنتجع بقوانين سلطنة عمان خلال فترة الإيجار</p>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">2</div>
+                    <div class="instruction-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>المحافظة على الممتلكات</h4>
+                    <p>المحافظة على جميع محتويات المنتجع. في حالة تلف أي شيء يلتزم بدفع قيمته فوراً</p>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">3</div>
+                    <div class="instruction-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <h4>المسؤولية الكاملة</h4>
+                    <p>المستأجر مسؤول مسؤولية كاملة عما يحدث داخل المنتجع (الغرق أو الإصابات)</p>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">4</div>
+                    <div class="instruction-icon"><i class="fa-solid fa-ban"></i></div>
+                    <h4>عدم إشعال النار</h4>
+                    <p>عدم إشعال النار أو الفحم في غير المكان المخصص له</p>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">5</div>
+                    <div class="instruction-icon"><i class="fa-solid fa-people-group"></i></div>
+                    <h4>الطرف الأول غير مسؤول</h4>
+                    <p>الطرف الأول غير مسؤول عن المفقودات التي تخص المستأجر</p>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">6</div>
+                    <div class="instruction-icon"><i class="fa-solid fa-paw"></i></div>
+                    <h4>ممنوع الحيوانات والطيور</h4>
+                    <p>يمنع الاقتراب من الحيوانات والأسماك والإمساك بها في المنتجع (يسمح بالمشاهدة والتصوير فقط)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section booking-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h3 class="section-title">احجز تجربتك الآن</h3>
+                <p class="section-subtitle">سهولة في الحجز وسرعة في التنفيذ</p>
+            </div>
+
+            <div class="booking-wrapper">
+                <div class="booking-form-container">
+                    <form class="booking-form" id="bookingForm">
+                        <div class="form-group">
+                            <label for="name"><i class="fa-solid fa-user"></i> الاسم الكامل</label>
+                            <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone"><i class="fa-solid fa-phone"></i> رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+968 XXXX XXXX">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date"><i class="fa-solid fa-calendar"></i> تاريخ الحجز</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="time"><i class="fa-solid fa-clock"></i> الوقت</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guests"><i class="fa-solid fa-users"></i> عدد الضيوف</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">اختر عدد الضيوف</option>
+                                <option value="1-5">1-5 أشخاص</option>
+                                <option value="6-10">6-10 أشخاص</option>
+                                <option value="11-15">11-15 شخص</option>
+                                <option value="16+">16+ شخص</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message"><i class="fa-solid fa-message"></i> ملاحظات إضافية</label>
+                            <textarea id="message" name="message" rows="4" placeholder="أي طلبات خاصة؟"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            <span>إرسال الحجز</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="booking-info">
+                    <div class="info-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <h4>اتصل بنا</h4>
+                        <p dir="ltr">+968 96621616</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fa-brands fa-instagram"></i>
+                        <h4>تابعنا</h4>
+                        <p>@royalresort.om</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-clock"></i>
+                        <h4>ساعات العمل</h4>
+                        <p>24/7 متاح دائماً</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h3 class="section-title">تواصل معنا</h3>
+                <p class="section-subtitle">نحن هنا للإجابة على جميع استفساراتك</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h4>الهاتف</h4>
+                    <p dir="ltr">+968 96621616</p>
+                    <a href="tel:+96896621616" class="contact-link">اتصل الآن</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h4>واتساب</h4>
+                    <p dir="ltr">+968 96621616</p>
+                    <a href="https://wa.me/96896621616" class="contact-link" target="_blank">راسلنا</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h4>إنستجرام</h4>
+                    <p>@royalresort.om</p>
+                    <a href="https://instagram.com/royalresort.om" class="contact-link" target="_blank">تابعنا</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h4>الموقع</h4>
+                    <p>سلطنة عمان</p>
+                    <a href="#" class="contact-link">عرض الخريطة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <i class="fa-solid fa-crown"></i>
+                            <h3>المنتجع الملكي</h3>
+                            <p class="footer-subtitle">Royal Resort</p>
+                        </div>
+                        <p class="footer-desc">تجربة استثنائية من الفخامة والراحة في أجواء ملكية لا مثيل لها</p>
+                        <div class="social-links">
+                            <a href="https://instagram.com/royalresort.om" target="_blank" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/96896621616" target="_blank" aria-label="WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                            <a href="tel:+96896621616" aria-label="Phone">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>روابط سريعة</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home"><i class="fa-solid fa-chevron-left"></i> الرئيسية</a></li>
+                            <li><a href="#about"><i class="fa-solid fa-chevron-left"></i> من نحن</a></li>
+                            <li><a href="#features"><i class="fa-solid fa-chevron-left"></i> المرافق</a></li>
+                            <li><a href="#booking"><i class="fa-solid fa-chevron-left"></i> الحجز</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>مرافقنا</h4>
+                        <ul class="footer-links">
+                            <li><i class="fa-solid fa-film"></i> سينما خاصة</li>
+                            <li><i class="fa-solid fa-tv"></i> شاشة ضخمة 4×4م</li>
+                            <li><i class="fa-solid fa-route"></i> ممرات مشي جميلة</li>
+                            <li><i class="fa-solid fa-tree"></i> مساحات خضراء</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>تواصل معنا</h4>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fa-solid fa-phone"></i>
+                                <span dir="ltr">+968 96621616</span>
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-instagram"></i>
+                                <span>@royalresort.om</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>سلطنة عمان</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 المنتجع الملكي - جميع الحقوق محفوظة</p>
+                <p class="dev-credit">Developed with <i class="fa-solid fa-heart"></i> for Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/96896621616" class="whatsapp-float" target="_blank" aria-label="تواصل معنا عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">راسلنا على واتساب</span>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
+
 </html>
